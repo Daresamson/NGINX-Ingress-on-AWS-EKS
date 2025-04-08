@@ -118,7 +118,8 @@ kubectl apply -f configs/deployment.yaml
 ```
 
 ### **3.2 Create the HPA**  
-![Screenshot (151)](https://github.com/user-attachments/assets/e2618aea-8a1f-4b67-ae0a-291f0174e988)
+![Screenshot (151)](https://github.com/user-attachments/assets/80d7927a-a989-4d63-b647-0ecc532671fb)
+
 
 To enable auto-scaling based on CPU utilization, I ran:  
 ```bash
@@ -133,7 +134,9 @@ kubectl get hpa
 Initially, the **target CPU utilization was low**, so scaling had not yet occurred.  
 
 ### **3.4 Simulate Load to Trigger Autoscaling**  
-![Screenshot (149)](https://github.com/user-attachments/assets/784834c4-4673-4c97-aefb-b1d7afa276b4)
+![Screenshot (147)](https://github.com/user-attachments/assets/cce2da02-9e66-450a-a273-c09ecdf49d1c)
+![Screenshot (148)](https://github.com/user-attachments/assets/74551e09-94c3-4ac3-8893-15132e7c7d26)
+
 
 
 I simulated high traffic:  
@@ -176,6 +179,8 @@ I accessed NGINX via browser or curl:
 curl http://<External-IP>
 ```
 The NGINX welcome page **loaded successfully**, confirming public availability.
+![Screenshot (149)](https://github.com/user-attachments/assets/26b205d6-b1b1-4015-a3fe-4e19f893c92d)
+![Screenshot (148)](https://github.com/user-attachments/assets/a4bd9f5c-682b-45af-853a-ce2ea18f564e)
 
 ---
 
