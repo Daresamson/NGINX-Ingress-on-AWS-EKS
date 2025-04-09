@@ -213,11 +213,11 @@ Once the tunnel was established, I tested access by opening a browser or running
 
 ```bash
 curl http://localhost:8080
-![Screenshot (181)](https://github.com/user-attachments/assets/a47bde45-aba8-4f14-99f0-74122b020a36)
-![Screenshot (180)](https://github.com/user-attachments/assets/eb3d77c5-ab9b-4343-a725-51ca8c221527)
-![Screenshot (182)](https://github.com/user-attachments/assets/933fd81d-18bf-43b8-846e-d91162d45c72)
 
 ```
+![Screenshot (181)](https://github.com/user-attachments/assets/47ef2c5c-3a53-43a4-ba10-7d20b136e0bf)
+![Screenshot (180)](https://github.com/user-attachments/assets/d7cab0b7-27cb-41aa-a4c0-9846a5114001)
+![Screenshot (182)](https://github.com/user-attachments/assets/dcd1d47b-92e8-48b2-8d0c-9fd04ff103d8)
 
 ✅ **Result**: The **NGINX welcome page** loaded successfully, confirming the application was accessible externally through the SSH tunnel.
 
