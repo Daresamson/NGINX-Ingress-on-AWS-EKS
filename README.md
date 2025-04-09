@@ -172,17 +172,58 @@ I obtained the **public IP**:
 ```bash
 kubectl get svc nginx-deployment
 ```
-
-### **4.3 Test External Access**  
-I accessed NGINX via browser or curl:  
-```bash
-curl http://<External-IP>
-```
-The NGINX welcome page **loaded successfully**, confirming public availability.
-![Screenshot (149)](https://github.com/user-attachments/assets/26b205d6-b1b1-4015-a3fe-4e19f893c92d)
-![Screenshot (148)](https://github.com/user-attachments/assets/a4bd9f5c-682b-45af-853a-ce2ea18f564e)
+Here’s the **personalized README section** for **Test External Access** based on your unique setup and approach:
 
 ---
+
+# **Test External Access (Minikube via EC2 SSH Tunnel)**
+
+To access the NGINX application deployed on Minikube running inside an EC2 instance, I followed these steps:
+
+### **Step 1: Expose the NGINX Deployment**
+
+After deploying the NGINX app, I exposed the service as a `LoadBalancer` type:
+
+```bash
+kubectl expose deployment nginx-deployment --type=LoadBalancer --port=80
+```
+
+Then, I retrieved the service details using:
+
+```bash
+kubectl get svc nginx-deployment
+```
+
+
+### 4.3 **Step 2: Set Up an SSH Tunnel for External Access**
+
+Since Minikube was running inside an EC2 instance, the external IP provided by the `LoadBalancer` wasn't directly accessible. Instead, I created an **SSH tunnel** from my **local machine** to the EC2 instance to forward traffic:
+
+```bash
+ssh -i funmi.pem -L 8080:10.97.54.223:80 ubuntu@52.91.104.233
+```
+
+This command did the following:
+- Forwarded my local machine’s **port 8080** to **port 80** of the NGINX service running inside the EC2 instance (via Minikube).
+- Allowed me to access the service from **localhost:8080**.
+
+### **Step 3: Test Access via Local Browser or Curl**
+
+Once the tunnel was established, I tested access by opening a browser or running the following `curl` command on my local machine:
+
+```bash
+curl http://localhost:8080
+![Screenshot (181)](https://github.com/user-attachments/assets/a47bde45-aba8-4f14-99f0-74122b020a36)
+![Screenshot (180)](https://github.com/user-attachments/assets/eb3d77c5-ab9b-4343-a725-51ca8c221527)
+![Screenshot (182)](https://github.com/user-attachments/assets/933fd81d-18bf-43b8-846e-d91162d45c72)
+
+```
+
+✅ **Result**: The **NGINX welcome page** loaded successfully, confirming the application was accessible externally through the SSH tunnel.
+
+---
+
+This was the process I used to test external access to the NGINX app in my **Minikube cluster on EC2**. Let me know if you'd like to expand the README further or need any more specific details!
 
 ## **Step 5: Adding Liveness and Readiness Probes**  
 ![Screenshot (152)](https://github.com/user-attachments/assets/df597ed0-a353-470e-a5ed-95bd57628f7a)
